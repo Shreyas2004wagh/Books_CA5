@@ -20,7 +20,7 @@ function App() {
       .then((res) => {
         if (res.data.books.error === 'empty query') {
           setAllBooks([]);
-          console.log('No');
+          console.log('No data');
         } else {
           setAllBooks(res.data.books);
           setSearchResults(res.data.books); 
@@ -54,6 +54,7 @@ function App() {
       <NavBar />
       <div className="search-container">
         <input
+          id='input'
           type="text"
           placeholder="Search books..."
           value={searchInput}
@@ -66,7 +67,7 @@ function App() {
 
         {searchResults.length > 0 && (
           <div>
-            <h2>Search Results:</h2>
+            <h1>Search Results:</h1>
             <ul>
               {searchResults.map((book) => (
                 <li key={book.id}>
@@ -77,6 +78,7 @@ function App() {
                   />
                   <p>{book.title}</p>
                   <p>Free</p>
+                  <p>Rating: {book.averageRating || 'N/A'}</p>
                 </li>
               ))}
             </ul>

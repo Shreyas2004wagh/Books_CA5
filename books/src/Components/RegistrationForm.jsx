@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Navbar from "./Navbar";
 import '../App.css'
+import NewNavbar from '../Components/NewNavbar'
+import { Link } from "react-router-dom";
 
 export default function Form() {
   const [registrationSuccessful, setRegistrationSuccessful] = React.useState(
@@ -24,9 +25,10 @@ export default function Form() {
       data.password.length >= 10 &&
       /[!@#$%^&*(),.?":{}|<>]/.test(data.password) &&
       data.password === data.repeatPassword
-    ) {
+    ) 
+    {
       setRegistrationSuccessful(true);
-      console.log("Data saved:", data);
+      console.log("Data", data);
     }
   };
 
@@ -42,9 +44,9 @@ export default function Form() {
           <p>Registration Successful !</p>
         </div>
       )}
-      <div className="formm">
+      <div className="form">
         <div className="nav">
-          <Navbar />
+          <NewNavbar />
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="inputData">
@@ -124,6 +126,7 @@ export default function Form() {
               <p className="errorMessage">{errors.repeatPassword.message}</p>
             )}
           </div>
+         
           <input
             type="submit"
             value="Sign up"

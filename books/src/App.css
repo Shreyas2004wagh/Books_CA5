@@ -1,5 +1,6 @@
 *{
   text-decoration: none;
+  color: white;
 }
 
 .navbar {
@@ -27,7 +28,7 @@
   text-decoration: none;
   border-radius: 5px;
   cursor: pointer;
-
+  
 }
 
 .register-btn:hover {
@@ -54,6 +55,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-color: black;
   margin: 0;
 }
 
@@ -84,8 +86,6 @@ img {
   max-height: 150px;
 }
 
-/* App.css */
-
 .registrationForm {
   display: flex;
   flex-direction: column;
@@ -93,9 +93,9 @@ img {
   margin-top: 20px;
 }
 
-.formm {
+.form {
   width: 300px;
-  background-color: #f0f0f0;
+  background-color: green;
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 8px;
@@ -121,6 +121,7 @@ input {
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
+  color: #333;
 }
 
 .errorMessage {
@@ -156,5 +157,21 @@ input {
 
 .done p {
   margin: 0;
+
+}
+
+li {
+  border: 1px solid white;
+  box-shadow: 10px 10px  rgba(0, 0, 0, 0.1);
+  margin: 8px;
+  padding: 16px; 
+}
+
+@media (max-width:600px) {
+  
+#input {
+  margin-top: 20vw;
+  padding: 8px;
+}
 
 }
