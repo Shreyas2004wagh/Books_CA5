@@ -3,18 +3,19 @@ import { useForm } from "react-hook-form";
 import '../App.css'
 import NewNavbar from '../Components/NewNavbar'
 import { Link } from "react-router-dom";
-
+// Functional component for the registration form   
 export default function Form() {
   const [registrationSuccessful, setRegistrationSuccessful] = React.useState(
     false
   );
+  // Destructuring properties from react-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
     getValues,
   } = useForm({
-    mode: "all",
+    mode: "all", // Validation mode to check all fields on submit
   });
 
   const onSubmit = (data) => {
@@ -27,6 +28,7 @@ export default function Form() {
       data.password === data.repeatPassword
     ) 
     {
+      // If validation passes, set registrationSuccessful to true
       setRegistrationSuccessful(true);
       console.log("Data", data);
     }
@@ -34,6 +36,7 @@ export default function Form() {
 
   const validatePasswordMatch = (value) => {
     const { password } = getValues();
+    // Function to validate password match
     return value === password || "Passwords do not match";
   };
 
@@ -48,6 +51,7 @@ export default function Form() {
         <div className="nav">
           <NewNavbar />
         </div>
+        {/* Form element with onSubmit handler */}
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="inputData">
             <label>Name :</label>
@@ -55,6 +59,7 @@ export default function Form() {
               type="text"
               placeholder="Enter Your Name"
               name="name"
+              //spread operator 
               {...register("name", {
                 required: "Name is Required !",
                 minLength: {
@@ -107,6 +112,7 @@ export default function Form() {
                 },
               })}
             />
+              {/* Display error message if validation fails */}
             {errors.password && (
               <p className="errorMessage">{errors.password.message}</p>
             )}
@@ -123,15 +129,16 @@ export default function Form() {
               })}
             />
             {errors.repeatPassword && (
+                // Display error message if validation fails
               <p className="errorMessage">{errors.repeatPassword.message}</p>
             )}
           </div>
-         
+          {/* Submit button */}
           <input
             type="submit"
             value="Sign up"
             className="btn"
-            disabled={!isValid}
+            disabled={!isValid}  // Disabled the submit button if the form is not valid
           />
         </form>
       </div>
